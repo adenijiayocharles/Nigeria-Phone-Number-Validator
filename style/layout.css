@@ -1,7 +1,22 @@
 body{
 	margin: 0;
 	padding: 0;
-	background: #F5F5F5;
+	background: #CCC;
+	font-family: "Segoe UI";
+}
+
+.cover{
+	width: 400px;
+	height: auto;
+	margin: auto;
+	margin-top: 50px;
+	padding: 1%;
+}
+
+#error{
+	height: auto;
+	padding: 5px;
+	font-size: 12px;
 }
 
 .valid{
@@ -14,4 +29,12 @@ body{
 
 .invalid{
 	border: 1px solid red;
+}
+
+input[type="text"]{
+	width: 100%;
+	height: 40px;
+	margin: auto;
+	border: 1px solid #F5F5F5;
+	margin-bottom: 10px;
 }
