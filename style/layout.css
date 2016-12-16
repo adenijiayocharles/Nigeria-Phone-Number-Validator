@@ -1,0 +1,17 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: #F5F5F5;
+}
+
+.valid{
+	border: 1px solid green;
+}
+
+.notSoValid{
+	border: 1px solid yellow;
+}
+
+.invalid{
+	border: 1px solid red;
+}

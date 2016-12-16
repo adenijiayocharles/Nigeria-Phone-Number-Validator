@@ -1,7 +1,7 @@
 //Nigerian mobile number prefixes from the four major telcos - MTN, GLO, AIRTEL & ETISALAT
 var mobileNumberPrefix = [703, 706, 803, 806, 810, 813, 814, 816, 903, 705, 805, 811, 815, 905, 701, 708, 802, 808, 812, 902, 809, 817, 818, 909, 804];
 
-
+//search array for specific values
 function in_array(value, array){
 	var index = array.indexOf(value);
 	if(index == -1){
@@ -30,14 +30,15 @@ phoneInput.addEventListener("change",function(){
 	var firstFive = Number(phoneInputValue.slice(4,7));
 	var inarray = in_array(firstFive, mobileNumberPrefix);
 	if(inarray === false){
+		errorDiv.innerHTML = "Invalid Nigerian Mobile Number";
 		console.log("Not nigerian mobile number");
 	}else{
 		if(inputLength === 14){
+			errorDiv.innerHTML = "Valid Nigerian Mobile Number";
 			console.log("right number");
 		}else if(inputLength < 14){
+			errorDiv.innerHTML = "Valid Nigerian Mobile Number but invalid length";			
 			console.log("Correct Nigerian GSM Number but invalid length");
 		}
-		// var merged = IDD + mobileNumberPrefix[inarray];
-		// console.log(merged);
 	}
 });
