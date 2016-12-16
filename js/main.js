@@ -31,13 +31,17 @@ phoneInput.addEventListener("change",function(){
 	var inarray = in_array(firstFive, mobileNumberPrefix);
 	if(inarray === false){
 		errorDiv.innerHTML = "Invalid Nigerian Mobile Number";
+		errorDiv.className = "invalid";
+
 		console.log("Not nigerian mobile number");
 	}else{
 		if(inputLength === 14){
 			errorDiv.innerHTML = "Valid Nigerian Mobile Number";
+			errorDiv.className = "valid";
 			console.log("right number");
 		}else if(inputLength < 14){
 			errorDiv.innerHTML = "Valid Nigerian Mobile Number but invalid length";			
+			errorDiv.className = "notSoValid";
 			console.log("Correct Nigerian GSM Number but invalid length");
 		}
 	}
