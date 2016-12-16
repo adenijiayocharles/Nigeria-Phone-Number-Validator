@@ -7,7 +7,7 @@ function in_array(value, array){
 	if(index == -1){
 		return false;
 	}else{
-		return true;
+		return index;
 	}
 }
 
@@ -23,40 +23,21 @@ const maxlength = 14;
 //phone number text field
 var phoneInput = document.getElementById("phone");
 
-
-phoneInput.addEventListener("keyup",function(){
-	//get value from text box
-	var phoneInputValue = phoneInput.value;
-
-	//get length of input
-	var inputLength = phoneInputValue.length;
-
-	//get first four letters of entered value
-	if(inputLength < maxlength){
-		errorDiv.innerHTML = "Invalid length";
-	}else if(inputLength >= 14){
-		errorDiv.innerHTML = "";
-	}
-
-	if(phoneInputValue === ""){
-		errorDiv.innerHTML = "";	
-	}
-
-	//get first four characters in entered value
-	var firstValues = String(phoneInputValue.slice(0, 4));
-	
-	if(firstValues === "+234"){
-		errorDiv.innerHTML = "Nigerian Number";
-	}else{
-		console.log("Not Nigerian Number");
-	}
-});
-
 phoneInput.addEventListener("change",function(){
 	phoneInputValue = phoneInput.value;
+	var inputLength = phoneInputValue.length;
+	// console.log(inputLength);
 	var firstFive = Number(phoneInputValue.slice(4,7));
 	var inarray = in_array(firstFive, mobileNumberPrefix);
-	console.log(inarray);
-
-
+	if(inarray === false){
+		console.log("Not nigerian mobile number");
+	}else{
+		if(inputLength === 14){
+			console.log("right number");
+		}else if(inputLength < 14){
+			console.log("invalid");
+		}
+		// var merged = IDD + mobileNumberPrefix[inarray];
+		// console.log(merged);
+	}
 });
