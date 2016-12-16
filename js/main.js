@@ -1,16 +1,29 @@
 //Nigerian mobile number prefixes from the four major telcos - MTN, GLO, AIRTEL & ETISALAT
-var mobileNumberPrefix = [0703, 0706, 0803, 0806, 0810, 0813, 0814, 0816, 0903, 0705, 0805, 0811, 0815, 0905, 0701, 0708, 0802, 0808, 0812, 0902, 0809, 0817, 0818, 0909, 0804];
+var mobileNumberPrefix = [703, 706, 803, 806, 810, 813, 814, 816, 903, 705, 805, 811, 815, 905, 701, 708, 802, 808, 812, 902, 809, 817, 818, 909, 804];
+
+
+function in_array(value, array){
+	var index = array.indexOf(value);
+	if(index == -1){
+		return false;
+	}else{
+		return true;
+	}
+}
 
 //error div
 var errorDiv = document.getElementById("error");
-
+ 
 //Nigeria's international dialling code
-var idd = "+234";
+const IDD = "+234";
 
 //maximum length of required value
-var maxlength = 14;
+const maxlength = 14;
 
+//phone number text field
 var phoneInput = document.getElementById("phone");
+
+
 phoneInput.addEventListener("keyup",function(){
 	//get value from text box
 	var phoneInputValue = phoneInput.value;
@@ -28,4 +41,22 @@ phoneInput.addEventListener("keyup",function(){
 	if(phoneInputValue === ""){
 		errorDiv.innerHTML = "";	
 	}
+
+	//get first four characters in entered value
+	var firstValues = String(phoneInputValue.slice(0, 4));
+	
+	if(firstValues === "+234"){
+		errorDiv.innerHTML = "Nigerian Number";
+	}else{
+		console.log("Not Nigerian Number");
+	}
+});
+
+phoneInput.addEventListener("change",function(){
+	phoneInputValue = phoneInput.value;
+	var firstFive = Number(phoneInputValue.slice(4,7));
+	var inarray = in_array(firstFive, mobileNumberPrefix);
+	console.log(inarray);
+
+
 });
