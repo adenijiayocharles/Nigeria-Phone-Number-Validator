@@ -1,5 +1,5 @@
 # Nigeria-Phone-Number-Validator
-================================
+===========
 This script should serve the purpose of validating Nigerian mobile numbers from the four major telecommunications companies - MTN, GLO, AIRTEL AND ETISALAT. Please note that it will only validate numbers in the following format(for now): +234xxxxxxxxxxx.
 
 ...
