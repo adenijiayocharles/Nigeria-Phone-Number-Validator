@@ -35,7 +35,7 @@ phoneInput.addEventListener("change",function(){
 		if(inputLength === 14){
 			console.log("right number");
 		}else if(inputLength < 14){
-			console.log("invalid");
+			console.log("Correct Nigerian GSM Number but invalid length");
 		}
 		// var merged = IDD + mobileNumberPrefix[inarray];
 		// console.log(merged);
