@@ -74,32 +74,4 @@ phoneInput.addEventListener("change",function(){
 		errorDiv.innerHTML = "Invalid length";			
 		errorDiv.className = "invalid";		
 	}
-
-
-
-
-
-
-
-
-	// if(inarray === false){
-	// 	errorDiv.innerHTML = "Invalid Nigerian Mobile Number";
-	// 	errorDiv.className = "invalid";
-	// 	console.log("Not nigerian mobile number");
-	// }else{
-	// 	if(inputLength === maxlength){
-
-	// 		//get phone index
-
-
-
-
-
-
-	// 		errorDiv.innerHTML = "Valid Nigerian Mobile Number";
-	// 		errorDiv.className = "valid";
-	// 		console.log("right number");
-	// 	}else if(inputLength < maxlength){
-	// 	}
-	// }
 });
