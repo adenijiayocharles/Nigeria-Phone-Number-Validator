@@ -32,7 +32,6 @@ phoneInput.addEventListener("change",function(){
 	if(inarray === false){
 		errorDiv.innerHTML = "Invalid Nigerian Mobile Number";
 		errorDiv.className = "invalid";
-
 		console.log("Not nigerian mobile number");
 	}else{
 		if(inputLength === 14){
