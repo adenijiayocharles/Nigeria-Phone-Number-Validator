@@ -24,24 +24,82 @@ const maxlength = 14;
 var phoneInput = document.getElementById("phone");
 
 phoneInput.addEventListener("change",function(){
+
+	//get value from textbox
 	phoneInputValue = phoneInput.value;
+
+	//get value length
 	var inputLength = phoneInputValue.length;
-	// console.log(inputLength);
-	var firstFive = Number(phoneInputValue.slice(4,7));
-	var inarray = in_array(firstFive, mobileNumberPrefix);
-	if(inarray === false){
-		errorDiv.innerHTML = "Invalid Nigerian Mobile Number";
+
+	//if length is less than the required length of 14
+	if(inputLength < maxlength){
+		errorDiv.innerHTML = "Invalid length";			
 		errorDiv.className = "invalid";
-		console.log("Not nigerian mobile number");
-	}else{
-		if(inputLength === 14){
-			errorDiv.innerHTML = "Valid Nigerian Mobile Number";
-			errorDiv.className = "valid";
-			console.log("right number");
-		}else if(inputLength < 14){
-			errorDiv.innerHTML = "Valid Nigerian Mobile Number but invalid length";			
-			errorDiv.className = "notSoValid";
-			console.log("Correct Nigerian GSM Number but invalid length");
+
+	//if length is equal to required length
+	}else if(inputLength === maxlength){
+
+		//get mobile number prefix from entered vale
+		var prefix = Number(phoneInputValue.slice(4,7));
+
+		//get international dialing code from entered value
+		var dialingCodeFromNumber = phoneInputValue.slice(0,4);
+
+		//check if prefix exists in mobile prefix array
+		var inarray = in_array(prefix, mobileNumberPrefix);
+
+		//if prefix not found in array
+		if(inarray === false){
+			errorDiv.innerHTML = "Invalid GSM number";			
+			errorDiv.className = "invalid";
+
+		//if found in array
+		}else{
+
+			//get index from array
+			var phoneIndex = mobileNumberPrefix[inarray];
+
+			//combine dialling code and prefix from number entered
+			var merged = dialingCodeFromNumber + prefix;
+			
+			var required = IDD + phoneIndex;
+			if(merged == required){
+				console.log("valid");
+			}else{
+				console.log("invalid");
+			}
+			
 		}
+	}else if(inputLength > 14){
+		errorDiv.innerHTML = "Invalid length";			
+		errorDiv.className = "invalid";		
 	}
+
+
+
+
+
+
+
+
+	// if(inarray === false){
+	// 	errorDiv.innerHTML = "Invalid Nigerian Mobile Number";
+	// 	errorDiv.className = "invalid";
+	// 	console.log("Not nigerian mobile number");
+	// }else{
+	// 	if(inputLength === maxlength){
+
+	// 		//get phone index
+
+
+
+
+
+
+	// 		errorDiv.innerHTML = "Valid Nigerian Mobile Number";
+	// 		errorDiv.className = "valid";
+	// 		console.log("right number");
+	// 	}else if(inputLength < maxlength){
+	// 	}
+	// }
 });
