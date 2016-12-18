@@ -22,6 +22,7 @@ const maxlength = 14;
 
 //phone number text field
 var phoneInput = document.getElementById("phone");
+var prefix;
 
 phoneInput.addEventListener("change",function(){
 
@@ -32,15 +33,28 @@ phoneInput.addEventListener("change",function(){
 	var inputLength = phoneInputValue.length;
 
 	//if length is less than the required length of 14
-	if(inputLength < maxlength){
+	if(inputLength <11){
 		errorDiv.innerHTML = "Invalid length";			
 		errorDiv.className = "invalid";
 
 	//if length is equal to required length
+	}else if(inputLength === 11){
+		prefix = Number(phoneInputValue.substr(1,3));
+		var check = in_array(prefix, mobileNumberPrefix);
+		if(check === false){
+			console.log("invalid number")
+		}else{
+			console.log("Valid mobile number");
+		}
+		
+
+	}else if(inputLength === 13){
+		prefix = phoneInputValue.substr(3,3);
+		//console.log(prefix);
 	}else if(inputLength === maxlength){
 
 		//get mobile number prefix from entered vale
-		var prefix = Number(phoneInputValue.slice(4,7));
+		prefix = Number(phoneInputValue.slice(4,7));
 
 		//get international dialing code from entered value
 		var dialingCodeFromNumber = phoneInputValue.slice(0,4);
