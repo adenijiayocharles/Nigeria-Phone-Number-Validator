@@ -32,7 +32,7 @@ phoneInput.addEventListener("change",function(){
 	//if length is less than the required length of 14
 	if(inputLength <11){
 
-		console.log("invalid length");
+		console.log("invalid gsm number length");
 
 	//if length is equal to required length
 	}else if(inputLength === 11){
@@ -40,9 +40,9 @@ phoneInput.addEventListener("change",function(){
 		prefix = Number(phoneInputValue.substr(1,3));
 		check = in_array(prefix, mobileNumberPrefix);
 		if(check === false){
-			console.log("invalid number");
+			console.log("invalid gsm number");
 		}else{
-			console.log("Valid mobile number");
+			console.log("Valid gsm number");
 		}
 
 	}else if(inputLength === 13){
@@ -50,11 +50,11 @@ phoneInput.addEventListener("change",function(){
 		dialingCodeFromNumber = Number(phoneInputValue.substr(0,3));
 		check = in_array(prefix, mobileNumberPrefix);
 		if(check === false){
-			console.log("invalid number");
+			console.log("invalid gsm number");
 		}else if((check >= 0) && (dialingCodeFromNumber === 234)){
-			console.log("valid number");
+			console.log("Valid gsm number");
 		}else{
-			console.log("invalid number");
+			console.log("invalid gsm number");
 		}
 
 	}else if(inputLength === 14){
@@ -70,14 +70,14 @@ phoneInput.addEventListener("change",function(){
 
 		//if prefix not found in array
 		if(check === false){
-			console.log("invalid number");
+			console.log("invalid gsm number");
 		//if found in array
 		}else if((check >= 0) && (dialingCodeFromNumber === "+234")){
-			console.log("valid number");
+			console.log("valid gsm number");
 		}else{
-			console.log("invalid number");
+			console.log("invalid gsm number");
 		}
 	}else if(inputLength > 14){
-		console.log("invalid length");
+		console.log("invalid gsm number length");
 	}
 });
