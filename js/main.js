@@ -14,11 +14,6 @@ function in_array(value, array){
 //error div
 var errorDiv = document.getElementById("error");
  
-//Nigeria's international dialling code
-const IDDwithoutPlus = 234;
-const IDD = "+234";
-
-
 //phone number text field
 var phoneInput = document.getElementById("phone");
 var prefix;
@@ -47,7 +42,6 @@ phoneInput.addEventListener("change",function(){
 		}else{
 			console.log("Valid mobile number");
 		}
-		
 
 	}else if(inputLength === 13){
 		prefix = Number(phoneInputValue.substr(3,3));
@@ -70,29 +64,16 @@ phoneInput.addEventListener("change",function(){
 		var dialingCodeFromNumber = phoneInputValue.slice(0,4);
 
 		//check if prefix exists in mobile prefix array
-		var inarray = in_array(prefix, mobileNumberPrefix);
+		check = in_array(prefix, mobileNumberPrefix);
 
 		//if prefix not found in array
-		if(inarray === false){
-			errorDiv.innerHTML = "Invalid GSM number";			
-			errorDiv.className = "invalid";
-
+		if(check === false){
+			console.log("invalid number");
 		//if found in array
+		}else if((check >= 0) && (dialingCodeFromNumber === "+234")){
+			console.log("valid number");
 		}else{
-
-			//get index from array
-			var phoneIndex = mobileNumberPrefix[inarray];
-
-			//combine dialling code and prefix from number entered
-			var merged = dialingCodeFromNumber + prefix;
-			
-			var required = IDD + phoneIndex;
-			if(merged == required){
-				console.log("valid");
-			}else{
-				console.log("invalid");
-			}
-			
+			console.log("invalid number");
 		}
 	}else if(inputLength > 14){
 		errorDiv.innerHTML = "Invalid length";			
