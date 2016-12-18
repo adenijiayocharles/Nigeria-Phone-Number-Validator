@@ -16,6 +16,7 @@ var errorDiv = document.getElementById("error");
  
 //phone number text field
 var phoneInput = document.getElementById("phone");
+var dialingCodeFromNumber;
 var prefix;
 var check;
 var idd;
@@ -30,11 +31,12 @@ phoneInput.addEventListener("change",function(){
 
 	//if length is less than the required length of 14
 	if(inputLength <11){
-		errorDiv.innerHTML = "Invalid length";			
-		errorDiv.className = "invalid";
+
+		console.log("invalid length");
 
 	//if length is equal to required length
 	}else if(inputLength === 11){
+
 		prefix = Number(phoneInputValue.substr(1,3));
 		check = in_array(prefix, mobileNumberPrefix);
 		if(check === false){
@@ -45,11 +47,11 @@ phoneInput.addEventListener("change",function(){
 
 	}else if(inputLength === 13){
 		prefix = Number(phoneInputValue.substr(3,3));
-		idd = Number(phoneInputValue.substr(0,3));
+		dialingCodeFromNumber = Number(phoneInputValue.substr(0,3));
 		check = in_array(prefix, mobileNumberPrefix);
 		if(check === false){
 			console.log("invalid number");
-		}else if((check >= 0) && (idd === 234)){
+		}else if((check >= 0) && (dialingCodeFromNumber === 234)){
 			console.log("valid number");
 		}else{
 			console.log("invalid number");
@@ -61,7 +63,7 @@ phoneInput.addEventListener("change",function(){
 		prefix = Number(phoneInputValue.slice(4,7));
 
 		//get international dialing code from entered value
-		var dialingCodeFromNumber = phoneInputValue.slice(0,4);
+		dialingCodeFromNumber = phoneInputValue.slice(0,4);
 
 		//check if prefix exists in mobile prefix array
 		check = in_array(prefix, mobileNumberPrefix);
@@ -76,7 +78,6 @@ phoneInput.addEventListener("change",function(){
 			console.log("invalid number");
 		}
 	}else if(inputLength > 14){
-		errorDiv.innerHTML = "Invalid length";			
-		errorDiv.className = "invalid";		
+		console.log("invalid length");
 	}
 });
