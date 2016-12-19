@@ -21,14 +21,14 @@ body{
 
 .valid{
 	border: 1px solid green;
-}
-
-.notSoValid{
-	border: 1px solid yellow;
+	background: green;
+	color: #FFF;
 }
 
 .invalid{
 	border: 1px solid red;
+	background: red;
+	color: #FFF;
 }
 
 input[type="text"]{
