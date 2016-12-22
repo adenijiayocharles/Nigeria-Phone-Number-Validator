@@ -30,7 +30,8 @@ phoneInput.addEventListener("change",function(){
 	if(inputLength < 11){
 
 		errorDiv.innerHTML = "Invalid gsm number length";
-		errorDiv.className = "invalid";
+		errorDiv.classList.remove("valid");												
+		errorDiv.classList.add("invalid");
 		console.log("invalid gsm number length");
 
 	//if length is equal to 11 (070xxxxxxxx)
@@ -38,17 +39,26 @@ phoneInput.addEventListener("change",function(){
 
 				//get mobile number prefix - 706 or 703 - depending on telco
 				mobilePrefix = Number(phoneInputValue.substr(1,3));
+				firstFigure = phoneInputValue[0];
 
 				//check if mobile prefix exists in telcoPrefixes array
 				checkArray = in_array(mobilePrefix, telcoPrefixes);
 				if(checkArray === false){
 					errorDiv.innerHTML = "Invalid gsm number";
-					errorDiv.className = "invalid";			
+					errorDiv.classList.remove("valid");												
+					errorDiv.classList.add("invalid");			
 					console.log("invalid gsm number");
-				}else{
+				}else if(checkArray > 0 && firstFigure == 0){
 					errorDiv.innerHTML = "Valid gsm number";
-					errorDiv.className = "valid";						
+					errorDiv.classList.remove("invalid");				
+					errorDiv.classList.add("valid");												
 					console.log("Valid gsm number");
+				}else{
+					errorDiv.innerHTML = "Invalid gsm number";
+					errorDiv.classList.remove("valid");												
+					errorDiv.classList.add("invalid");			
+					console.log("invalid gsm number");
+
 				}
 
 	//if length is equal to 13 (23470xxxxxxxx)
@@ -65,19 +75,22 @@ phoneInput.addEventListener("change",function(){
 				if(checkArray === false){
 					
 					errorDiv.innerHTML = "Invalid gsm number";
-					errorDiv.className = "invalid";			
+					errorDiv.classList.remove("valid");												
+					errorDiv.classList.add("invalid");					
 					console.log("invalid gsm number");
 
 				}else if((checkArray >= 0) && (dialingCode === 234)){
 
 					errorDiv.innerHTML = "Valid gsm number";
-					errorDiv.className = "valid";						
+					errorDiv.classList.remove("invalid");				
+					errorDiv.classList.add("valid");												
 					console.log("Valid gsm number");
 
 				}else{
 
 					errorDiv.innerHTML = "Invalid gsm number";
-					errorDiv.className = "invalid";			
+					errorDiv.classList.remove("valid");												
+					errorDiv.classList.add("invalid");				
 					console.log("invalid gsm number");
 
 				}
@@ -98,26 +111,30 @@ phoneInput.addEventListener("change",function(){
 				if(checkArray === false){
 					
 					errorDiv.innerHTML = "Invalid gsm number";
-					errorDiv.className = "invalid";			
+					errorDiv.classList.remove("valid");												
+					errorDiv.classList.add("invalid");				
 					console.log("invalid gsm number");
 
 				//if found in array
 				}else if((checkArray >= 0) && (dialingCode === "+234")){
 
 					errorDiv.innerHTML = "Valid gsm number";
-					errorDiv.className = "valid";						
+					errorDiv.classList.remove("invalid");				
+					errorDiv.classList.add("valid");						
 					console.log("Valid gsm number");
 
 				}else{
 
 					errorDiv.innerHTML = "Invalid gsm number";
-					errorDiv.className = "invalid";			
+					errorDiv.classList.remove("valid");												
+					errorDiv.classList.add("invalid");				
 					console.log("invalid gsm number");
 
 				}
 	}else if(inputLength > 14){
 		errorDiv.innerHTML = "invalid gsm number length";
-		errorDiv.className = "invalid";			
+		errorDiv.classList.remove("valid");												
+		errorDiv.classList.add("invalid");				
 		console.log("invalid gsm number length");
 	}
 });
