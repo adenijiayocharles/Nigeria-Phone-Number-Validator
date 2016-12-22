@@ -39,7 +39,7 @@ phoneInput.addEventListener("change",function(){
 
 				//get mobile number prefix - 706 or 703 - depending on telco
 				mobilePrefix = Number(phoneInputValue.substr(1,3));
-				firstFigure = phoneInputValue[0];
+				firstFigure = Number(phoneInputValue[0]);
 
 				//check if mobile prefix exists in telcoPrefixes array
 				checkArray = in_array(mobilePrefix, telcoPrefixes);
@@ -48,7 +48,7 @@ phoneInput.addEventListener("change",function(){
 					errorDiv.classList.remove("valid");												
 					errorDiv.classList.add("invalid");			
 					console.log("invalid gsm number");
-				}else if(checkArray > 0 && firstFigure == 0){
+				}else if(checkArray > 0 && firstFigure === 0){
 					errorDiv.innerHTML = "Valid gsm number";
 					errorDiv.classList.remove("invalid");				
 					errorDiv.classList.add("valid");												
